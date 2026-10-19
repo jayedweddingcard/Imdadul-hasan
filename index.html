@@ -17,25 +17,25 @@ button{cursor:pointer;padding:10px 16px;border-radius:25px;border:1px solid var(
 button:hover{filter:brightness(1.15);transform:translateY(-1px)}
 button:focus-visible,input:focus-visible,textarea:focus-visible,#gate:focus-visible{outline:3px solid #fff;outline-offset:2px}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(22,13,11,.92);backdrop-filter:blur(8px);padding:10px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:2px solid var(--gold)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:rgba(22,13,11,.92);z-index:21}
+body::before{content:"";position:fixed;top:0;right:0;left:0;height:env(safe-area-inset-top,0px);background:rgba(22,13,11,.92);z-index:21}
 header strong{color:var(--gold-light);font-size:18px}
 .actions{display:flex;gap:6px;flex-wrap:wrap}
 .dark-btn{background:var(--green)!important;color:#fff!important;border-color:#2e7d32!important}
 main{max-width:850px;margin:25px auto;padding:15px}
-#gate{position:fixed;inset:0;z-index:99999;background:radial-gradient(ellipse at center,#2e1a0f,#110805);display:flex;align-items:center;justify-content:center;perspective:1600px;overflow:hidden;cursor:pointer;transition:opacity 1s,visibility 1s}
+#gate{position:fixed;top:0;right:0;left:0;bottom:0;z-index:99999;background:radial-gradient(ellipse at center,#2e1a0f,#110805);display:flex;align-items:center;justify-content:center;perspective:1600px;overflow:hidden;cursor:pointer;transition:opacity 1s,visibility 1s}
 #gate.hide{opacity:0;visibility:hidden;pointer-events:none}
-.arch{position:absolute;inset:2% 3% 0;border:7px solid #9c702b;border-bottom:0;border-radius:48% 48% 0 0;box-shadow:inset 0 0 0 5px #f2d78d,0 0 35px rgba(224,189,118,.3);pointer-events:none;z-index:6}
+.arch{position:absolute;top:2%;right:3%;left:3%;bottom:0;border:7px solid #9c702b;border-bottom:0;border-radius:48% 48% 0 0;box-shadow:inset 0 0 0 5px #f2d78d,0 0 35px rgba(224,189,118,.3);pointer-events:none;z-index:6}
 .door-wrapper{position:relative;width:92vw;max-width:450px;height:80vh;max-height:730px;display:flex;border:4px solid var(--gold);border-radius:20px;box-shadow:0 0 50px rgba(224,189,118,.35),inset 0 0 35px rgba(0,0,0,.85);background:#1a0d07;overflow:hidden}
 .door{width:50%;height:100%;background:repeating-linear-gradient(90deg,#3d2512,#80582c 12%,#4b3018 24%,#9a713a 40%,#422713 65%);box-shadow:inset 0 0 0 8px #c69c4b,inset 0 0 0 14px #4a2c16,inset 0 0 0 18px #e5c46f;position:relative;transition:transform 2.2s cubic-bezier(.25,1,.3,1)}
 .door.left{transform-origin:left center}.door.right{transform-origin:right center}
 #gate.open .door.left{transform:translateX(-104%)}#gate.open .door.right{transform:translateX(104%)}
 #gate.open .door-wrapper{border-color:transparent;box-shadow:none;background:transparent}
 #gate.open .arch{opacity:0;transition:opacity 1.2s}
-.frame{position:absolute;inset:26% 8% 8%;border:3px double #e8c879;background:linear-gradient(145deg,#79542c,#301b0d);box-shadow:inset 0 0 0 6px #c49a43;text-align:center;color:#f8d98c;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.frame{position:absolute;top:26%;right:8%;left:8%;bottom:8%;border:3px double #e8c879;background:linear-gradient(145deg,#79542c,#301b0d);box-shadow:inset 0 0 0 6px #c49a43;text-align:center;color:#f8d98c;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .frame .symbol{font-size:clamp(35px,8vw,65px)}.frame .pattern{font-size:20px;line-height:1.6}
 .handle{position:absolute;top:52%;width:17px;height:48px;background:linear-gradient(180deg,#ffe28a,#9c6c22);border-radius:9px;transform:translateY(-50%)}
 .door.left .handle{right:12px}.door.right .handle{left:12px}
-.overlay{position:absolute;inset:0;z-index:50;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center;pointer-events:none;transition:opacity .8s}
+.overlay{position:absolute;top:0;right:0;left:0;bottom:0;z-index:50;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center;pointer-events:none;transition:opacity .8s}
 #gate.open .overlay{opacity:0}
 .door-bismillah{font-family:'Amiri',serif;font-size:clamp(24px,5.5vw,34px);color:var(--gold-light);margin-bottom:10px;text-shadow:0 2px 8px #000}
 .door-title{font-size:clamp(22px,5vw,30px);font-weight:700;color:var(--gold);margin-bottom:10px;text-shadow:0 2px 8px #000}
@@ -73,7 +73,7 @@ main{max-width:850px;margin:25px auto;padding:15px}
 .field input,.field textarea{width:100%;padding:10px;border:1px solid #c9ad6c;border-radius:7px;background:#fff;color:#222}
 .field textarea{min-height:65px}
 .small{font-size:13px;color:#6d6049;line-height:1.6}
-#effects{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:100000}
+#effects{position:fixed;top:0;right:0;left:0;bottom:0;pointer-events:none;overflow:hidden;z-index:100000}
 .petal{position:absolute;top:-25px;width:14px;height:20px;border-radius:80% 10% 80% 10%;animation:fall 6s linear forwards}
 @keyframes fall{to{transform:translate(var(--drift),110vh) rotate(680deg);opacity:.15}}
 .bird{position:absolute;top:48%;font-size:34px;animation:fly 3.5s forwards cubic-bezier(.2,.8,.4,1)}
@@ -84,15 +84,19 @@ footer{text-align:center;padding:25px;font-size:14px;color:#e5cfad}
 #editToggle,#adminLogout{display:none}
 body.admin-mode #editToggle,body.admin-mode #adminLogout{display:inline-block}
 body.guest-mode .admin-entry{display:none!important}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:16px;z-index:100002}
+.modal{position:fixed;top:0;right:0;left:0;bottom:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;padding:16px;z-index:100002}
 .modal.show{display:flex}
 .modal-box{background:#fffaf0;border:3px double var(--gold);border-radius:14px;padding:22px;width:100%;max-width:340px;text-align:center;color:var(--ink)}
 .modal-box input{width:100%;margin:8px 0;padding:9px;border:1px solid #c9ad6c;border-radius:6px}
 @media(max-width:600px){.couple{grid-template-columns:1fr;gap:8px}.amp{line-height:.8}header{justify-content:center}.actions{justify-content:center}}
 @media(prefers-reduced-motion:reduce){.door-open-btn{animation:none}.petal,.bird{animation-duration:.01s}}
+.float-lock{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));width:46px;height:46px;padding:0;border-radius:50%;font-size:20px;z-index:100004;opacity:.9}
+body.guest-mode .float-lock,body.admin-mode .float-lock{display:none}
+.actions button,.audio-controls button{margin:3px}
 </style>
 </head>
 <body>
+<script>window.addEventListener('error',function(e){try{var d=document.getElementById('errbar');if(!d){d=document.createElement('div');d.id='errbar';d.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#b71c1c;color:#fff;padding:8px 12px;font:13px sans-serif';d.onclick=function(){d.style.display='none'};document.body.appendChild(d);}d.textContent='ত্রুটি: '+(e.message||'অজানা')+' (চাপলে বন্ধ হবে)';d.style.display='block';}catch(_){}});</script>
 <header>
   <strong id="titleTap">✦ ROYAL ISLAMIC WEDDING</strong>
   <div class="actions">
@@ -101,7 +105,7 @@ body.guest-mode .admin-entry{display:none!important}
     <button type="button" id="replay">↻ গেট</button>
     <button type="button" id="shareTop">📤 শেয়ার</button>
     <button type="button" id="editToggle">⚙ সম্পাদনা</button>
-    <button type="button" id="adminLogout">🚪 লগআউট</button>
+    <button type="button" id="adminLogout" onclick="RW.logout()">🚪 লগআউট</button>
   </div>
 </header>
 
@@ -164,7 +168,7 @@ body.guest-mode .admin-entry{display:none!important}
       <button type="button" id="testMusic">▶ গজল পরীক্ষা</button>
       <button type="button" id="stopMusic">⏸ গজল বন্ধ</button>
       <button type="button" id="testFlowers">🌸 ফুল ঝরান</button>
-      <button type="button" id="changePw">🔑 পাসওয়ার্ড বদলান</button>
+      <button type="button" id="changePw" onclick="RW.open('change')">🔑 পাসওয়ার্ড বদলান</button>
       <button type="button" id="closeEditor">বন্ধ করুন</button>
     </div>
     <p id="status" class="status"></p>
@@ -207,20 +211,21 @@ body.guest-mode .admin-entry{display:none!important}
 
 <footer>
   আল্লাহ নবদম্পতির জীবনে বরকত দান করুন। আমিন।
-  <div class="admin-entry" style="margin-top:10px"><button type="button" id="adminEntry" style="background:none;border:none;color:#e0bd76;text-decoration:underline">🔒 অ্যাডমিন মোড</button></div>
+  <div class="admin-entry" style="margin-top:10px"><button type="button" id="adminEntry" onclick="RW.open('login')" style="background:none;border:none;color:#e0bd76;text-decoration:underline">🔒 অ্যাডমিন মোড</button></div>
 </footer>
 <div class="toast" id="toast" role="status"></div>
+<button type="button" id="floatLock" class="float-lock" onclick="RW.open('login')" aria-label="অ্যাডমিন লগইন">🔒</button>
 
 <div class="modal" id="adminModal">
   <div class="modal-box">
     <h3 id="adminTitle">অ্যাডমিন প্রবেশ</h3>
     <p class="small" id="adminHint"></p>
-    <input type="password" id="adminPass" placeholder="পাসওয়ার্ড" autocomplete="off">
-    <input type="password" id="adminPass2" placeholder="পাসওয়ার্ড আবার লিখুন" autocomplete="off" hidden>
+    <input type="password" id="adminPass" placeholder="পাসওয়ার্ড" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" onkeydown="if(event.key==='Enter')RW.submit()">
+    <input type="password" id="adminPass2" placeholder="পাসওয়ার্ড আবার লিখুন" autocomplete="off" hidden onkeydown="if(event.key==='Enter')RW.submit()">
     <div id="adminMsg" style="color:#b71c1c;font-size:13px;min-height:1.3em"></div>
     <div style="display:flex;gap:8px;justify-content:center;margin-top:12px">
-      <button type="button" id="adminOk" class="dark-btn">নিশ্চিত করুন</button>
-      <button type="button" id="adminCancel">বাতিল</button>
+      <button type="button" id="adminOk" class="dark-btn" onclick="RW.submit()">নিশ্চিত করুন</button>
+      <button type="button" id="adminCancel" onclick="RW.close()">বাতিল</button>
     </div>
   </div>
 </div>
@@ -229,67 +234,25 @@ body.guest-mode .admin-entry{display:none!important}
 <audio id="voiceAudio" preload="none"></audio>
 
 <script>
-(() => {
-"use strict";
-const $ = id => document.getElementById(id);
-const KEYS = ['groom','gfather','bride','bfather','guest','date','venue','map','message','voice','music','bg','event'];
-const DEF = {groom:'ইমদাদুল হাসান জায়েদ',gfather:'হাফেজ আলী আহমাদ',bride:'তাসফিয়া জাহান',bfather:'মাওলানা আবু ইউসুফ সাহেব',
-  guest:'সম্মানিত অতিথি, আপনাকে আমাদের শুভ বিবাহ অনুষ্ঠানে সাদর আমন্ত্রণ।',date:'তারিখ ও সময় সম্পাদনা করে লিখুন',
-  venue:'মাওলানা আবু ইউসুফ সাহেবের বাড়ি',map:'',message:'আপনাদের উপস্থিতি আমাদের আনন্দকে পূর্ণতা দেবে। নবদম্পতির জন্য দোয়া করবেন।',
-  voice:'',music:'',bg:'',event:''};
-const S_KEY='rw_data_v4', PW_KEY='rw_pw_v4', SES_KEY='rw_admin_v4';
-const store = {
-  get:k=>{try{return localStorage.getItem(k)}catch(_){return null}},
-  set:(k,v)=>{try{localStorage.setItem(k,v);return true}catch(_){return false}}
-};
-const sess = {
-  get:k=>{try{return sessionStorage.getItem(k)}catch(_){return null}},
-  set:(k,v)=>{try{sessionStorage.setItem(k,v)}catch(_){}},
-  del:k=>{try{sessionStorage.removeItem(k)}catch(_){}}
-};
-const https = u => /^https:\/\//i.test((u||'').trim());
-const enc = o => btoa(unescape(encodeURIComponent(JSON.stringify(o))));
-const dec = s => JSON.parse(decodeURIComponent(escape(atob(s))));
-const inviteHash = () => { const m = (location.hash||'').match(/(?:^#|&)invite=([^&]+)/); return m ? m[1] : null; };
-
-let data = {...DEF}, localAudio='', localImg='', timer=null, adminMode='login';
-let admin = sess.get(SES_KEY)==='1';
-const isGuest = () => !!inviteHash();
-const isOwner = () => admin && !isGuest();
-
-function load(){
-  const h = inviteHash();
-  try{
-    if(h){ data = {...DEF, ...dec(h)}; return; }
-    const s = store.get(S_KEY);
-    if(s) data = {...DEF, ...JSON.parse(s)};
-  }catch(_){ data = {...DEF}; }
-}
-function modes(){
-  document.body.classList.toggle('admin-mode', isOwner());
-  document.body.classList.toggle('guest-mode', isGuest());
-}
-let toastT;
-function toast(m){ const t=$('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2800); }
-function say(m){ $('status').textContent=m; toast(m); }
-
-/* ---------- Render ---------- */
-function render(){
-  $('vguest').textContent = data.guest;
-  $('vgroom').textContent = data.groom;
-  $('vbride').textContent = data.bride;
-  $('vgfather').textContent = 'পিতা: '+data.gfather;
-  $('vbfather').textContent = 'পিতা: '+data.bfather;
-  $('vdate').textContent = 'তারিখ: '+data.date;
-  $('vvenue').textContent = 'ভেন্যু: '+data.venue;
-  const ok = https(data.map);
-  $('mapWrap').hidden = !ok;
-  if(ok) $('vmap').href = data.map.trim();
-  $('messageWrap').hidden = !data.message.trim();
-  $('vmessage').textContent = data.message;
-  const bg = localImg || (https(data.bg) ? data.bg.trim() : '');
-  if(bg){
-    const safe = bg.replace(/["'()\\\s]/g, encodeURIComponent);
-    document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),url("${safe}")`;
-    document.body.style.backgroundAttachment='fixed';
-  } else { document.body.style.backgroundImage=''; document.body.style.backgroundAttachment=''; }
+/* স্বাধীন অ্যাডমিন স্ক্রিপ্ট (পুরোনো ফোনেও চলে): মূল স্ক্রিপ্টে সমস্যা হলেও লগইন খুলবে */
+var RW=window.RW={};
+(function(){
+var PW_KEY='rw_pw_v4',SES='rw_admin_v4',DEF_PW='74e79be852bf9',mode='login',mem=false;
+function $(i){return document.getElementById(i);}
+function lg(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function ls(k,v){try{localStorage.setItem(k,v);return localStorage.getItem(k)===v;}catch(e){return false;}}
+function sg(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+function ss(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+function sd(k){try{sessionStorage.removeItem(k);}catch(e){}}
+function guest(){return /(?:^#|&)invite=/.test(location.hash||'');}
+function hp(s){var h1=0xdeadbeef,h2=0x41c6ce57,i,c;for(i=0;i<s.length;i++){c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return (4294967296*(2097151&h2)+(h1>>>0)).toString(16);}
+function fire(){var ev=document.createEvent('Event');ev.initEvent('rwadmin',true,true);document.dispatchEvent(ev);}
+function cur(){return lg(PW_KEY)||DEF_PW;}
+RW.isAdmin=function(){return (mem||sg(SES)==='1')&&!guest();};
+RW.open=function(m){
+  mode=(m==='change'&&RW.isAdmin())?'change':'login';
+  var ch=mode==='change',box=$('adminModal');
+  if(!box){var p=window.prompt('অ্যাডমিন পাসওয়ার্ড:');if(p!==null&&(hp('royal|'+p)===cur()||hp('royal|'+p)===DEF_PW)){mem=true;ss(SES,'1');fire();}return;}
+  $('adminTitle').textContent=ch?'নতুন পাসওয়ার্ড দিন':'অ্যাডমিন প্রবেশ';
+  $('adminHint').textContent=ch?'কমপক্ষে ৬ অক্ষর দিন।':'';
+  $('adminPass2').hidden=!ch;$('adminPass').value='';$('adminPass2').value='';$('adminM
