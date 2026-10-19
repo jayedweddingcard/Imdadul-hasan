@@ -207,7 +207,42 @@ body.guest-mode .admin-entry{display:none!important}
 <audio id="audio" loop preload="none"></audio>
 <audio id="voiceAudio" preload="none"></audio>
 
-<script>
+<script> /* ---------- FIX: Wedding Gate Opening ---------- */
+function openWeddingGate() {
+  const gate = document.getElementById('gate');
+  if (!gate || gate.classList.contains('open')) return;
+
+  gate.classList.add('open');
+
+  setTimeout(() => {
+    gate.classList.add('hide');
+    document.body.style.overflow = '';
+  }, 2300);
+}
+
+const weddingGate = document.getElementById('gate');
+const openDoorButton = document.getElementById('openDoorBtn');
+
+if (weddingGate) {
+  weddingGate.addEventListener('click', openWeddingGate);
+
+  weddingGate.addEventListener('keydown', function (event) {
+    if (event.target !== weddingGate) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openWeddingGate();
+    }
+  });
+}
+
+if (openDoorButton) {
+  openDoorButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    openWeddingGate();
+  });
+}
 (() => {
 "use strict";
 const $ = id => document.getElementById(id);
