@@ -28,7 +28,9 @@ main{max-width:850px;margin:25px auto;padding:15px}
 .door-wrapper{position:relative;width:92vw;max-width:450px;height:80vh;max-height:730px;display:flex;border:4px solid var(--gold);border-radius:20px;box-shadow:0 0 50px rgba(224,189,118,.35),inset 0 0 35px rgba(0,0,0,.85);background:#1a0d07;overflow:hidden}
 .door{width:50%;height:100%;background:repeating-linear-gradient(90deg,#3d2512,#80582c 12%,#4b3018 24%,#9a713a 40%,#422713 65%);box-shadow:inset 0 0 0 8px #c69c4b,inset 0 0 0 14px #4a2c16,inset 0 0 0 18px #e5c46f;position:relative;transition:transform 2.2s cubic-bezier(.25,1,.3,1)}
 .door.left{transform-origin:left center}.door.right{transform-origin:right center}
-#gate.open .door.left{transform:rotateY(-115deg)}#gate.open .door.right{transform:rotateY(115deg)}
+#gate.open .door.left{transform:translateX(-104%)}#gate.open .door.right{transform:translateX(104%)}
+#gate.open .door-wrapper{border-color:transparent;box-shadow:none;background:transparent}
+#gate.open .arch{opacity:0;transition:opacity 1.2s}
 .frame{position:absolute;inset:26% 8% 8%;border:3px double #e8c879;background:linear-gradient(145deg,#79542c,#301b0d);box-shadow:inset 0 0 0 6px #c49a43;text-align:center;color:#f8d98c;display:flex;flex-direction:column;justify-content:center;align-items:center}
 .frame .symbol{font-size:clamp(35px,8vw,65px)}.frame .pattern{font-size:20px;line-height:1.6}
 .handle{position:absolute;top:52%;width:17px;height:48px;background:linear-gradient(180deg,#ffe28a,#9c6c22);border-radius:9px;transform:translateY(-50%)}
@@ -117,6 +119,25 @@ body.guest-mode .admin-entry{display:none!important}
   </div>
 </div>
 <div id="effects"></div>
+<script>
+/* স্বাধীন গেট স্ক্রিপ্ট: মূল স্ক্রিপ্টে ত্রুটি হলেও গেট খুলবে */
+(function(){
+  var g=document.getElementById('gate'); if(!g) return;
+  function openGate(e){
+    if(e&&e.preventDefault) e.preventDefault();
+    if(g.dataset.done==='1') return;
+    g.dataset.done='1';
+    g.classList.add('open');
+    try{document.dispatchEvent(new Event('gateopen'));}catch(_){}
+    setTimeout(function(){g.classList.add('hide');},1900);
+    setTimeout(function(){g.style.display='none';},3000);
+  }
+  g.addEventListener('click',openGate);
+  g.addEventListener('keydown',function(e){ if(e.target===g&&(e.key==='Enter'||e.key===' ')) openGate(e); });
+  var b=document.getElementById('openDoorBtn');
+  if(b) b.addEventListener('click',function(e){ e.stopPropagation(); openGate(e); });
+})();
+</script>
 
 <main>
   <section class="editor" id="editor">
@@ -207,42 +228,7 @@ body.guest-mode .admin-entry{display:none!important}
 <audio id="audio" loop preload="none"></audio>
 <audio id="voiceAudio" preload="none"></audio>
 
-<script> /* ---------- FIX: Wedding Gate Opening ---------- */
-function openWeddingGate() {
-  const gate = document.getElementById('gate');
-  if (!gate || gate.classList.contains('open')) return;
-
-  gate.classList.add('open');
-
-  setTimeout(() => {
-    gate.classList.add('hide');
-    document.body.style.overflow = '';
-  }, 2300);
-}
-
-const weddingGate = document.getElementById('gate');
-const openDoorButton = document.getElementById('openDoorBtn');
-
-if (weddingGate) {
-  weddingGate.addEventListener('click', openWeddingGate);
-
-  weddingGate.addEventListener('keydown', function (event) {
-    if (event.target !== weddingGate) return;
-
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openWeddingGate();
-    }
-  });
-}
-
-if (openDoorButton) {
-  openDoorButton.addEventListener('click', function (event) {
-    event.preventDefault();
-    event.stopPropagation();
-    openWeddingGate();
-  });
-}
+<script>
 (() => {
 "use strict";
 const $ = id => document.getElementById(id);
@@ -307,18 +293,4 @@ function render(){
     document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),url("${safe}")`;
     document.body.style.backgroundAttachment='fixed';
   } else { document.body.style.backgroundImage=''; document.body.style.backgroundAttachment=''; }
-  startCountdown();
-}
-
-/* ---------- Countdown ---------- */
-const bn = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
-function startCountdown(){
-  clearInterval(timer);
-  const box = $('countdown');
-  const target = data.event ? new Date(data.event).getTime() : NaN;
-  if(isNaN(target)){ box.innerHTML=''; const d=document.createElement('div'); d.className='cd-note'; d.textContent='বিয়ের তারিখ শীঘ্রই জানানো হবে'; box.appendChild(d); return; }
-  box.innerHTML = ['days:দিন','hours:ঘণ্টা','minutes:মিনিট','seconds:সেকেন্ড'].map(x=>{const[i,l]=x.split(':');return `<div class="unit"><b id="cd_${i}">--</b>${l}</div>`}).join('');
-  const tick = () => {
-    const diff = target - Date.now();
-    if(diff <= 0){ clearInterval(timer); box.innerHTML=''; const d=document.createElement('div'); d.className='cd-note'; d.textContent='🎉 শুভ বিবাহ অনুষ্ঠিত হচ্ছে / হয়েছে — আলহামদুলিল্লাহ'; box.appendChild(d); return; }
-    const s = Math.floor(diff/1
+  startCountd
