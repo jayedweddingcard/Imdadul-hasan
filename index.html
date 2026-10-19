@@ -285,12 +285,11 @@ function render(){
   const ok = https(data.map);
   $('mapWrap').hidden = !ok;
   if(ok) $('vmap').href = data.map.trim();
-  $('messageWrap').hidden = !data.message.trim();
-  $('vmessage').textContent = data.message;
+  $('messageWrap').hidden = !data.message.trim();$('vmessage').textContent = data.message;
   const bg = localImg || (https(data.bg) ? data.bg.trim() : '');
   if(bg){
     const safe = bg.replace(/["'()\\\s]/g, encodeURIComponent);
     document.body.style.backgroundImage = `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),url("${safe}")`;
     document.body.style.backgroundAttachment='fixed';
   } else { document.body.style.backgroundImage=''; document.body.style.backgroundAttachment=''; }
-  startCountd
+  startCountdown
